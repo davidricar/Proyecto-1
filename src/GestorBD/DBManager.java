@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.util.List;
-
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class DBManager // esta clase del gestor, que resume el todo. Puedo usar esto como plantilla del proyecto
@@ -38,7 +41,29 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         {
             System.out.println(e.getMessage());
         }
+        
     }
+//    public Connection connect(String filename)
+//    
+//    	
+//    {
+//    	String url = "jdbc:sqlite:" + filename; 
+//        // SQLite connection string
+//
+//        Connection conn = null;
+//
+//        try
+//        {
+//            conn = DriverManager.getConnection(url);
+//        } catch (SQLException e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        return conn;
+//    }
+
+    
     // Constructor
     public DBManager(String BDname)
     {
@@ -50,7 +75,7 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         try
         {
             this.conn = DriverManager.getConnection(this.BDname);
-            System.out.println("Connected");
+            System.out.println("Link Connected");
         }
         catch (SQLException e)
         {
@@ -58,13 +83,35 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         }
     }
 
-    public void createNewTable() throws SQLException
+    public void createNewTable1() throws SQLException
     {
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS Table_With_Dates (\n"
+        String sql = "CREATE TABLE IF NOT EXISTS Table_With_Personas (\n"
                 + "    nomapellido CHAR PRIMARY KEY,\n"
                 + "    sexo CHAR NOT NULL,\n"
                 + "    edad INTEGER NOT NULL\n"
+                + ");";
+
+        try
+                (
+                        // This is a try with resources syntax, resources taken here will be automatically freed at the end of the try block
+                        Statement stmt = this.conn.createStatement()
+                )
+        {
+            // create a new table
+            boolean result = stmt.execute(sql);
+        }
+        catch (SQLException e)
+        {
+            System.out.println("BadAss error creating table. " + e.getMessage());
+            System.out.println(sql);
+        }
+    }
+    public void createNewTable2() throws SQLException
+    {
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS Table_With_Deportista (\n"
+                + "    id INTEGER NOT NULL\n"
                 + ");";
 
         try
@@ -91,13 +138,14 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         }
     }
 
-    private void insert(String nomapellido, String sexo, int edad) throws SQLException
+    public void insert(String nomapellido, String sexo, int edad) throws SQLException
     {
         // Take into account that SQLite id attribute is an special attribute that is autoincremented by SQLite
-        String sql = "INSERT INTO Table_With_Persona(nomapellidp, sexo, edad) VALUES(?,?,?)";
+        String sql = "INSERT INTO Table_With_Personas(nomapellidp, sexo, edad) VALUES(?,?,?)";
 
         try
                 (
+                        
                         PreparedStatement pstmt = conn.prepareStatement(sql)
                 )
         {
@@ -119,6 +167,7 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             if (this.conn != null)
             {
                 this.conn.close();
+                System.out.println("Link Closed");
             }
         }
         catch (SQLException ex)
@@ -126,5 +175,6 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println("BadAss error closing connection" + ex.getMessage());
         }
     }
+  
 
 }

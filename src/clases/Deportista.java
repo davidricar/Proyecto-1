@@ -11,6 +11,13 @@ public class Deportista extends Persona implements DeclaracionFormatoFichero{
 	private int idolimpico;
 
 	
+	/**
+	 * 
+	 * @param nomapellido
+	 * @param sexo
+	 * @param edad
+	 * @param idolimpico
+	 */
 	public Deportista(String nomapellido,String sexo,int edad, int idolimpico) {
 		super(nomapellido, sexo, edad);
 		this.idolimpico = idolimpico;

@@ -12,9 +12,12 @@ public class mainprobar {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		DBManager miManager = new DBManager("Mibases.db");
-		miManager.createNewDatabase("Mibases.db");
+		miManager.createNewDatabase("MiBases.db");
 		miManager.createLink();
+		miManager.createNewTable1();
+		miManager.insert("as", "masculino", 19);
 		
+		miManager.closeLink();
 		//miManager.createNewDatabase("Mibases.db");
 		
 		

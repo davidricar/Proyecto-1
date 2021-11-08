@@ -4,6 +4,13 @@ public class Persona {
 	String nomapellido;
 	String sexo;
 	int edad;
+	
+	/**
+	 * 
+	 * @param nomapellido
+	 * @param sexo
+	 * @param edad
+	 */
 	public Persona(String nomapellido, String sexo, int edad) {
 		super();
 		this.nomapellido = nomapellido;
