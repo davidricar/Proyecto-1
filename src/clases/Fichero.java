@@ -27,23 +27,23 @@ public class Fichero {
 		}
 		
 	}
-//	public static void guardarPais(ArrayList<Pais> contenido, String nomPais){
-//		File F = new File("."+File.separator+"src"+File.separator+"deportes"+File.separator+nomPais+".txt");
-//		try {
-//			FileWriter w = new FileWriter(F);
-//			BufferedWriter bw = new BufferedWriter(w);
-//			for (int i = 0; i < contenido.size(); i++) {
-//				bw.write(contenido.get(i).formatoFichero()+"\n");
-//			}
-//			bw.flush();
-//			bw.close();
-//			w.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	public static void guardarPais(ArrayList<Pais> contenido, String nomPais){
+		File F = new File("."+File.separator+"src"+File.separator+"deportes"+File.separator+nomPais+".txt");
+		try {
+			FileWriter w = new FileWriter(F);
+			BufferedWriter bw = new BufferedWriter(w);
+			for (int i = 0; i < contenido.size(); i++) {
+				bw.write(contenido.get(i).formatoFichero()+"\n");
+			}
+			bw.flush();
+			bw.close();
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public static void guardarDeportista(ArrayList<Deportista> contenido, String nomDeportista){
 		File F = new File("."+File.separator+"src"+File.separator+"deportes"+File.separator+"paises"+File.separator+nomDeportista+".txt");
 		try {
@@ -104,31 +104,31 @@ public class Fichero {
 		
 		return d;
 	}
-//	public static ArrayList<Pais> leerPaises(String nomFichero){
-//		ArrayList<Pais>p = new ArrayList<Pais>();
-//		FileReader reader;
-//		try {
-//			reader = new FileReader("."+File.separator+"src"+File.separator+nomFichero);
-//			BufferedReader bf = new BufferedReader(reader);
-//			String text = bf.readLine();
-//			String[] textoDividido;
-//			while (text!=null) {
-//				textoDividido = text.split(";");
-//				Pais pa = new Pais(textoDividido[0]);
-//				p.add(pa);
-//				text = bf.readLine();
-//			}
-//			
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return p;
-//		
-//	}
+	public static ArrayList<Pais> leerPaises(String nomFichero){
+		ArrayList<Pais>p = new ArrayList<Pais>();
+		FileReader reader;
+		try {
+			reader = new FileReader("."+File.separator+"src"+File.separator+nomFichero);
+			BufferedReader bf = new BufferedReader(reader);
+			String text = bf.readLine();
+			String[] textoDividido;
+			while (text!=null) {
+				textoDividido = text.split(";");
+				Pais pa = new Pais(textoDividido[0]);
+				p.add(pa);
+				text = bf.readLine();
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return p;
+		
+	}
 	public static ArrayList<Deportista> leerDeportistas(String nomFichero){
 		ArrayList<Deportista>dep = new ArrayList<Deportista>();
 		FileReader reader;

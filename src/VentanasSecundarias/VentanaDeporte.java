@@ -56,14 +56,14 @@ public class VentanaDeporte extends JFrame {
 		
 		btnVerDeporte = new JButton("Ver deporte");
 		btnVerDeporte.setEnabled(false);
-//		btnVerDeporte.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				String deporte = (String) list.getSelectedValue();
-//				//JFrame ventana = new VentanaPais(deporte,VentanaDeporte.this);
-//				VentanaDeporte.this.setVisible(false);
-//				ventana.setVisible(true);
-//			}
-//		});
+		btnVerDeporte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String deporte = (String) list.getSelectedValue();
+				JFrame ventana = new VentanaPais(deporte,VentanaDeporte.this);
+				VentanaDeporte.this.setVisible(false);
+				ventana.setVisible(true);
+			}
+		});
 		btnVerDeporte.setBounds(239, 41, 141, 23);
 		contentPane.add(btnVerDeporte);
 		
@@ -78,13 +78,13 @@ public class VentanaDeporte extends JFrame {
 		contentPane.add(btnVolver);
 		
 		btnAnadirDeportes = new JButton("Anadir Deporte");
-//		btnAnadirDeportes.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				JFrame ventanaanadir = new AnadirDeporte(ventanaAnterior,lista_deportes);
-//				VentanaDeporte.this.dispose();
-//				ventanaanadir.setVisible(true);
-//			}
-//		});
+		btnAnadirDeportes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame ventanaanadir = new AnadirDeporte(ventanaAnterior,lista_deportes);
+				VentanaDeporte.this.dispose();
+				ventanaanadir.setVisible(true);
+			}
+		});
 		btnAnadirDeportes.setBounds(239, 102, 141, 23);
 		contentPane.add(btnAnadirDeportes);
 		

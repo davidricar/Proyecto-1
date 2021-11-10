@@ -11,13 +11,20 @@ public class mainprobar {
 
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-		DBManager miManager = new DBManager("Mibases.db");
-		miManager.createNewDatabase("MiBases.db");
+		DBManager miManager = new DBManager("Mibase.db");
+		
+		miManager.createNewDatabase("MiBase.db");
 		miManager.createLink();
-		miManager.createNewTable1();
-		miManager.insert("as", "masculino", 19);
+		
+		miManager.createNewTableDeporte();
+		miManager.insertTableDeporte("AAAA","Femenino");
+		
+		miManager.createNewTableDeportista();
+		miManager.insertTableDeportista("Carla", "femenino", 21,0001);
 		
 		miManager.closeLink();
+
+
 		//miManager.createNewDatabase("Mibases.db");
 		
 		

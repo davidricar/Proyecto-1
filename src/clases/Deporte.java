@@ -39,7 +39,11 @@ public class Deporte implements DeclaracionFormatoFichero  {
 	public void setTipodeporte(String tipodeporte) {
 		this.tipodeporte = tipodeporte;
 	}
-
+	/**
+	 * Este método, implementado por la interfaz, sirve para enviar el Deporte con los atributos
+	 *  tipo String separados con ";", para ser escritos en el fichero del dicho clase
+	 *  
+	 */
 	public String formatoFichero() {
 		return this.tipodeporte + ";" + this.sexo;
 	}
