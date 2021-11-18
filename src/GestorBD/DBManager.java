@@ -14,7 +14,11 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+/**
+ * 
+ * @author David Pacheco
+ *
+ */
 public class DBManager // esta clase del gestor, que resume el todo. Puedo usar esto como plantilla del proyecto
 {
     private Connection conn;
@@ -83,7 +87,9 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println("BadAss error creating connection. " + e.getMessage());
         }
     }
+   
     public void createNewTableDeporte() throws SQLException
+    
     {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Table_With_Deporte (\n"
@@ -106,6 +112,31 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println(sql);
         }
     }
+
+
+    public void createNewTablePais() throws SQLException
+    {
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS Table_With_Pais (\n"
+                + "    nompais CHAR PRIMARY KEY\n"
+                + ");";
+
+        try
+                (
+                        // This is a try with resources syntax, resources taken here will be automatically freed at the end of the try block
+                        Statement stmt = this.conn.createStatement()
+                )
+        {
+            // create a new table
+            boolean result = stmt.execute(sql);
+        }
+        catch (SQLException e)
+        {
+            System.out.println("BadAss error creating table. " + e.getMessage());
+            System.out.println(sql);
+        }
+    }
+
 
     public void createNewTableDeportista() throws SQLException
     {
@@ -162,6 +193,28 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println("BadAss error executing insert. " + e.getMessage());
         }
     }
+
+    public void insertTablePais(String nompais) throws SQLException
+    {
+        // Take into account that SQLite id attribute is an special attribute that is autoincremented by SQLite
+        String sql = "INSERT INTO Table_With_Pais(nompais) VALUES(?)";
+
+        try
+                (
+                        
+                        PreparedStatement pstmt = conn.prepareStatement(sql)
+                )
+        {
+            pstmt.setString(1, nompais);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("BadAss error executing insert. " + e.getMessage());
+        }
+    }
+
+
     public void insertTableDeportista(String nomapellido, String sexo, int edad, int idolimpico) throws SQLException
     {
         // Take into account that SQLite id attribute is an special attribute that is autoincremented by SQLite

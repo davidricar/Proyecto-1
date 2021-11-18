@@ -16,7 +16,6 @@ public class TestPais {
 		public void setUp() throws Exception {
 			
 			Pais1 = new Pais(null);
-			//final Persona per = new Persona(null, null, 0);
 			
 		}
 
@@ -30,6 +29,8 @@ public class TestPais {
 			String nomPais = "Alemania";
 			Pais1.setNompais(nomPais);
 			assert (Pais1.getNompais().equals(nomPais));
-			//fail("Not yet implemented");
+			
+			
 		}
+		
 }

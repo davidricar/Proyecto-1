@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import interfaz.DeclaracionFormatoFichero;
 
 
-
+/**
+ * 
+ * @author David Pacheco
+ *
+ */
 public class Deportista implements DeclaracionFormatoFichero{
 	String nomapellido;
 	String sexo;

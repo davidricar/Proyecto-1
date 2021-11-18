@@ -10,6 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Fichero {
+
+	/**
+	 * Se guarda en el fichero el deporte insertado en la ventada Anadir Deporte.
+	 * @param contenido, array de tipo derpote
+	 * @param nomDeporte , nombre de deporte
+	 */
+
 	public static void guardarDeporte(ArrayList<Deporte> contenido, String nomDeporte){
 		File F = new File("."+File.separator+"src"+File.separator+nomDeporte+".txt");
 		try {
@@ -79,6 +86,14 @@ public class Fichero {
 //		
 //	}
 	
+
+	/**
+	 * Este método lee del fichero deporte para luego cargarlo en un array y mostrarlo en la VentanaDeporte 
+	 * @param nomFichero String del nombre del fichero al que lo paso
+	 * @return d--> devuelve el variable de tipo deporte donde se han anadido todos los deportes en el fichero deportes.txt
+	 * 				dividido los atributos de cada deporte con ";".
+	 */
+
 	public static ArrayList<Deporte> leerDeporte(String nomFichero){
 		ArrayList<Deporte>d = new ArrayList<Deporte>();
 		FileReader reader;
@@ -179,7 +194,12 @@ public class Fichero {
 //		return med;
 //		
 //	}
-	
+
+	/**
+	 * Este metodo sirve para eliminar del Fichero el variable indicado
+	 * @param ruta --> pasa al método el nombre del fichero que se quiere eliminar
+	 */
+
 	public static void eliminarFichero(String ruta) {
 		File f = new File(ruta);
 		f.delete();

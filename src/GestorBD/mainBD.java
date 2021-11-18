@@ -1,3 +1,4 @@
+package GestorBD;
 
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -5,9 +6,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import GestorBD.*;
 
-public class mainprobar {
+public class mainBD {
 
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
@@ -17,11 +17,16 @@ public class mainprobar {
 		miManager.createLink();
 		
 		miManager.createNewTableDeporte();
-		miManager.insertTableDeporte("AAAA","Femenino");
+		miManager.insertTableDeporte("Baseball","Femenino");
+		
+		miManager.createNewTablePais();
+		miManager.insertTablePais("PER");
 		
 		miManager.createNewTableDeportista();
-		miManager.insertTableDeportista("Carla", "femenino", 21,0001);
-		
+		miManager.insertTableDeportista("Olga", "femenino", 35,0010);
+
+
+
 		miManager.closeLink();
 
 

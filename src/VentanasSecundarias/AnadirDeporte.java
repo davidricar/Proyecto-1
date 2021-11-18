@@ -22,6 +22,10 @@ import javax.swing.JComboBox;
 
 public class AnadirDeporte extends JFrame {
 
+	
+/**
+ */
+
 	private JPanel contentPane;
 	private ArrayList<Deporte> lista_deportes;
 	private JTextField textFieldNombreDeporte;
@@ -31,6 +35,14 @@ public class AnadirDeporte extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
+	/**
+	 * 
+	 * @param VentanaAnterior hace referencia a la ventana bienvenido
+	 * @param lista es un arraylist de tipo deportes en la que paso desde la ventana anterior (VentanaDeporte), 
+	 * y donde se guardan los deportes definidos en la interfaz, y luego las escribe en el fichero.
+	 */
+
 	public AnadirDeporte(JFrame VentanaAnterior,ArrayList<Deporte> lista) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

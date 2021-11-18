@@ -10,6 +10,7 @@ import interfaz.DeclaracionFormatoFichero;
  *
  */
 
+
 public class Deporte implements DeclaracionFormatoFichero  {
 
 	String sexo;
