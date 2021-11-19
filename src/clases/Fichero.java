@@ -68,23 +68,23 @@ public class Fichero {
 		}
 		
 	}
-//	public static void guardarMedallas(ArrayList<Medalla> contenido, String nomDeportista){
-//		File F = new File("."+File.separator+"src"+File.separator+"deportes"+File.separator+"paises"+File.separator+"deportistas"+File.separator+nomDeportista+".txt");
-//		try {
-//			FileWriter w = new FileWriter(F);
-//			BufferedWriter bw = new BufferedWriter(w);
-//			for (int i = 0; i < contenido.size(); i++) {
-//				bw.write(contenido.get(i).formatoFichero()+"\n");
-//			}
-//			bw.flush();
-//			bw.close();
-//			w.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	public static void guardarMedallas(ArrayList<Medalla> contenido, String nomDeportista){
+		File F = new File("."+File.separator+"src"+File.separator+"deportes"+File.separator+"paises"+File.separator+"deportistas"+File.separator+nomDeportista+".txt");
+		try {
+			FileWriter w = new FileWriter(F);
+			BufferedWriter bw = new BufferedWriter(w);
+			for (int i = 0; i < contenido.size(); i++) {
+				bw.write(contenido.get(i).formatoFichero()+"\n");
+			}
+			bw.flush();
+			bw.close();
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 
 	/**
@@ -169,31 +169,31 @@ public class Fichero {
 		return dep;
 		
 	}
-//	public static ArrayList<Medalla> leerMedallas(String nomFichero){
-//		ArrayList<Medalla>med = new ArrayList<Medalla>();
-//		FileReader reader;
-//		try {
-//			reader = new FileReader("."+File.separator+"src"+File.separator+nomFichero);
-//			BufferedReader bf = new BufferedReader(reader);
-//			String text = bf.readLine();
-//			String[] textoDividido;
-//			while (text!=null) {
-//				textoDividido = text.split(";");
-//				Medalla medallas = new Medalla(textoDividido[0]);
-//				med.add(medallas);
-//				text = bf.readLine();
-//			}
-//			
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return med;
-//		
-//	}
+	public static ArrayList<Medalla> leerMedallas(String nomFichero){
+		ArrayList<Medalla>med = new ArrayList<Medalla>();
+		FileReader reader;
+		try {
+			reader = new FileReader("."+File.separator+"src"+File.separator+nomFichero);
+			BufferedReader bf = new BufferedReader(reader);
+			String text = bf.readLine();
+			String[] textoDividido;
+			while (text!=null) {
+				textoDividido = text.split(";");
+				Medalla medallas = new Medalla(textoDividido[0]);
+				med.add(medallas);
+				text = bf.readLine();
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return med;
+		
+	}
 
 	/**
 	 * Este metodo sirve para eliminar del Fichero el variable indicado
