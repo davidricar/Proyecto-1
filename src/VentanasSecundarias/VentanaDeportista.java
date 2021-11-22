@@ -78,6 +78,7 @@ public class VentanaDeportista extends JFrame {
 				String tipomedallaoro = "Oro";
 				String tipomedallaplata= "Plata";
 				String tipomedallacobre = "Cobre";
+				
 
 				for (Medalla medalla : lista_medallas) {
 					if (medalla.getTipomedalla().equals(tipomedallaoro)) {

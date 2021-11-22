@@ -57,7 +57,7 @@ public class bienvenido extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbtextoolimpiada = new JLabel("Olimpiadas 2020");
+		JLabel lbtextoolimpiada = new JLabel("Olympics 2021 ");
 		lbtextoolimpiada.setBounds(173, 80, 101, 28);
 		contentPane.add(lbtextoolimpiada);
 		

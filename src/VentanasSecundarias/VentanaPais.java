@@ -57,15 +57,15 @@ public class VentanaPais extends JFrame {
 		
 		btnDeportista = new JButton("Ver Pais");
 		btnDeportista.setEnabled(false);
-//		btnDeportista.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				String pais = (String) list.getSelectedValue();
-//				JFrame ventana = new VentanaDeportista(pais,VentanaPais.this);
-//				VentanaPais.this.setVisible(false);
-//				ventana.setVisible(true);
-//			}
-//			
-//		});
+		btnDeportista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String pais = (String) list.getSelectedValue();
+				JFrame ventana = new VentanaDeportista(pais,VentanaPais.this);
+				VentanaPais.this.setVisible(false);
+				ventana.setVisible(true);
+			}
+			
+		});
 		btnDeportista.setBounds(251, 48, 133, 23);
 		contentPane.add(btnDeportista);
 		
