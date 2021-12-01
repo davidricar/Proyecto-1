@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -48,25 +49,6 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         }
         
     }
-//    public Connection connect(String filename)
-//    
-//    	
-//    {
-//    	String url = "jdbc:sqlite:" + filename; 
-//        // SQLite connection string
-//
-//        Connection conn = null;
-//
-//        try
-//        {
-//            conn = DriverManager.getConnection(url);
-//        } catch (SQLException e)
-//        {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        return conn;
-//    }
 
     
     // Constructor
@@ -238,7 +220,119 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         }
     }
     
- 
+    
+    public void selectAllDeportes()
+    {
+        String sql = "SELECT sexo,tipodeporte FROM Table_With_Deporte";
+
+        try
+                (
+                        Statement stmt  = conn.createStatement();// cuando ejecute el statement recoge el resultado
+                        ResultSet rs    = stmt.executeQuery(sql)// este linea guarda el resultado del statement en resultset
+                ) //en el query me devuelve los datos, que el el ResultSet.
+        {
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                        		rs.getString("sexo") + "\t" +
+                                rs.getString("tipodeporte")// en cada fila cojo todos los filas de la columna
+                        );
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void selectAllPais()
+    {
+        String sql = "SELECT nompais FROM Table_With_Pais";
+
+        try
+                (
+                        Statement stmt  = conn.createStatement();// cuando ejecute el statement recoge el resultado
+                        ResultSet rs    = stmt.executeQuery(sql)// este linea guarda el resultado del statement en resultset
+                ) //en el query me devuelve los datos, que el el ResultSet.
+        {
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                                rs.getString("nompais")// en cada fila cojo todos los filas de la columna
+                        );
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void selectAllDeportistas()
+    {
+        String sql = "SELECT nomapellido, sexo, edad, idolimpico FROM Table_With_Deportista";
+
+        try
+                (
+                        Statement stmt  = conn.createStatement();// cuando ejecute el statement recoge el resultado
+                        ResultSet rs    = stmt.executeQuery(sql)// este linea guarda el resultado del statement en resultset
+                ) //en el query me devuelve los datos, que el el ResultSet.
+        {
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                        		rs.getString("nomapellido") + "\t" +
+                        		rs.getString("sexo") + "\t" +
+                        		rs.getInt("edad") + "\t" +
+                                rs.getInt("idolimpico")//// en cada fila cojo todos los filas de la columna
+                        );
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void getEdadDeportistaMayorQue(int edad)
+    {
+        String sql = "SELECT nomapellido, sexo, edad, idolimpico FROM Table_With_Deportista WHERE edad > ?";
+
+        try
+                (
+                        PreparedStatement pstmt  = conn.prepareStatement(sql)
+                )
+        {
+
+            // set the value
+            pstmt.setInt(1,edad);
+
+
+            ResultSet rs  = pstmt.executeQuery();
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                        		"\n"+ 
+                        		rs.getString("nomapellido") +  "\t" +
+                                rs.getString("sexo") + "\t" +
+                                rs.getInt("edad") + "\t" +
+                                rs.getInt("idolimpico"));
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+
 
     public void closeLink() throws SQLException
     {

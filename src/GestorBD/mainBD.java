@@ -20,10 +20,17 @@ public class mainBD {
 		miManager.insertTableDeporte("Baseball","Femenino");
 		
 		miManager.createNewTablePais();
-		miManager.insertTablePais("PER");
+		miManager.insertTablePais("AND");
 		
 		miManager.createNewTableDeportista();
-		miManager.insertTableDeportista("Olga", "femenino", 35,0010);
+		miManager.insertTableDeportista("Buffon", "masculino", 40,13);
+		
+		
+		
+		miManager.selectAllPais();
+		miManager.selectAllDeportes();
+		miManager.selectAllDeportistas();
+		miManager.getEdadDeportistaMayorQue(34);
 
 
 
