@@ -145,6 +145,31 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println(sql);
         }
     }
+    public void createNewTableMedalla() throws SQLException
+    {
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS Table_With_Medalla (\n"
+                + "    idolimpico CHAR PRIMARY KEY,\n"
+                + "    medallaoro INTEGER NOT NULL,\n"
+                + "    medallaplata INTEGER INTEGER NULL,\n"
+                + "    medallabronce INTEGER NOT NULL\n"
+                + ");";
+
+        try
+                (
+                        // This is a try with resources syntax, resources taken here will be automatically freed at the end of the try block
+                        Statement stmt = this.conn.createStatement()
+                )
+        {
+            // create a new table
+            boolean result = stmt.execute(sql);
+        }
+        catch (SQLException e)
+        {
+            System.out.println("BadAss error creating table. " + e.getMessage());
+            System.out.println(sql);
+        }
+    }
    
 
     public void saveData(List<String> data) throws SQLException
@@ -219,6 +244,27 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println("BadAss error executing insert. " + e.getMessage());
         }
     }
+    public void insertTableMedalla(int idolimpico, int medallaoro, int medallaplata, int medallabronce) throws SQLException
+    {
+        // SQL statement for creating a new table
+        String sql = "INSERT INTO Table_With_Medalla(idolimpico, medallaoro, medallaplata,medallabronce) VALUES(?,?,?,?)";
+
+
+        try
+                (
+                        PreparedStatement pstmt = conn.prepareStatement(sql)
+                )
+        {
+        	pstmt.setInt(1, idolimpico);
+            pstmt.setInt(2, medallaoro);
+         	pstmt.setInt(3, medallaplata);
+         	pstmt.setInt(4, medallabronce);
+            pstmt.executeUpdate();        }
+        catch (SQLException e)
+        {
+            System.out.println("BadAss error creating table. " + e.getMessage());
+        }
+    }
     
     
     public void selectAllDeportes()
@@ -246,7 +292,6 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println(e.getMessage());
         }
     }
-    
     public void selectAllPais()
     {
         String sql = "SELECT nompais FROM Table_With_Pais";
@@ -299,7 +344,7 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
             System.out.println(e.getMessage());
         }
     }
-    public void getEdadDeportistaMayorQue(int edad)
+    public void selectEdadDeportistaMayorQue(int edad)
     {
         String sql = "SELECT nomapellido, sexo, edad, idolimpico FROM Table_With_Deportista WHERE edad > ?";
 
@@ -332,7 +377,96 @@ public class DBManager // esta clase del gestor, que resume el todo. Puedo usar 
         }
     }
     
+    public void selectEdadDeportistaMenorQue(int edad)
+    {
+        String sql = "SELECT nomapellido, sexo, edad, idolimpico FROM Table_With_Deportista WHERE edad < ?";
 
+        try
+                (
+                        PreparedStatement pstmt  = conn.prepareStatement(sql)
+                )
+        {
+
+            // set the value
+            pstmt.setInt(1,edad);
+
+
+            ResultSet rs  = pstmt.executeQuery();
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                        		"\n"+ 
+                        		rs.getString("nomapellido") +  "\t" +
+                                rs.getString("sexo") + "\t" +
+                                rs.getInt("edad") + "\t" +
+                                rs.getInt("idolimpico"));
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void selectMedallasDeportistas(int idolimpico)
+    {
+        String sql = "SELECT idolimpico, medallaoro, medallaplata, medallabronce FROM Table_With_Medalla WHERE idolimpico = ?";
+
+        try
+                (
+                        PreparedStatement pstmt  = conn.prepareStatement(sql)
+                )
+        {
+
+            // set the value
+            pstmt.setInt(1,idolimpico);
+
+
+            ResultSet rs  = pstmt.executeQuery();
+
+            // loop through the result set
+            while (rs.next())
+            {
+                System.out.println
+                        (
+                        		"\n"+ 
+                        		rs.getInt("idolimpico") +  "\t" +
+                                rs.getInt("medallaoro") + "\t" +
+                                rs.getInt("medallaplata") + "\t" +
+                                rs.getInt("medallabronce"));
+            }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    public void deleteDeportistaViaID(int idolimpico)
+    {
+        String sql = "DELETE FROM Table_With_Deportista WHERE idolimpico = ?";
+
+        try
+                (
+                        PreparedStatement pstmt = conn.prepareStatement(sql)
+                )
+        {
+
+            // set the corresponding param
+            pstmt.setInt(1, idolimpico);
+
+            // execute the delete statement
+            pstmt.executeUpdate();
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    } 
+   
 
     public void closeLink() throws SQLException
     {

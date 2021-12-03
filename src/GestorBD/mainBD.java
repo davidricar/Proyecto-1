@@ -17,21 +17,29 @@ public class mainBD {
 		miManager.createLink();
 		
 		miManager.createNewTableDeporte();
-		miManager.insertTableDeporte("Baseball","Femenino");
+		miManager.insertTableDeporte("Cricket","Masculino");
 		
 		miManager.createNewTablePais();
-		miManager.insertTablePais("AND");
+		miManager.insertTablePais("IND");
 		
 		miManager.createNewTableDeportista();
-		miManager.insertTableDeportista("Buffon", "masculino", 40,13);
+		miManager.insertTableDeportista("Rahul", "masculino", 22,15);
 		
+		miManager.createNewTableMedalla();
+		miManager.insertTableMedalla(15, 0, 1, 0);
 		
 		
 		miManager.selectAllPais();
 		miManager.selectAllDeportes();
 		miManager.selectAllDeportistas();
-		miManager.getEdadDeportistaMayorQue(34);
-
+		miManager.selectEdadDeportistaMayorQue(30);
+		miManager.selectEdadDeportistaMenorQue(28);
+		miManager.selectMedallasDeportistas(15);
+		
+		
+		
+		miManager.deleteDeportistaViaID(5);
+	
 
 
 		miManager.closeLink();
