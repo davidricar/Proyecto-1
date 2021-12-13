@@ -20,13 +20,13 @@ public class mainBD {
 		miManager.insertTableDeporte("Cricket","Masculino");
 		
 		miManager.createNewTablePais();
-		miManager.insertTablePais("IND");
+		miManager.insertTablePais("PAK");
 		
 		miManager.createNewTableDeportista();
-		miManager.insertTableDeportista("Rahul", "masculino", 22,15);
+		miManager.insertTableDeportista("Mahdmit", "masculino", 24,19);
 		
 		miManager.createNewTableMedalla();
-		miManager.insertTableMedalla(15, 0, 1, 0);
+		miManager.insertTableMedalla(19, 1, 2, 0);
 		
 		
 		miManager.selectAllPais();
@@ -38,7 +38,7 @@ public class mainBD {
 		
 		
 		
-		miManager.deleteDeportistaViaID(5);
+
 	
 
 
