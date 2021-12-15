@@ -1,14 +1,11 @@
-package TestRecursividad;
+package clasesrecursivas;
 
-/*
- * Archivo: QuickSort.java
- * Clase: QuickSort
- * Autor: parzibyte
- * Fecha: 12/26/19 4:07 PM
- * Visita https://parzibyte.me/blog para más tutoriales sobre Java
- */
+
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class QuickSort {
     public static void main(String[] args) {

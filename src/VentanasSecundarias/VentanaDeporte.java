@@ -15,6 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 import clases.Deporte;
 import clases.Fichero;
+import clasesrecursivas.I_Comparable;
 
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class VentanaDeporte extends JFrame {
 
 	private JPanel contentPane;
 	private ArrayList<Deporte> lista_deportes;
+	private ArrayList<Deporte> lista_deportesordenado;
 	private JList list;
 	private JButton btnVerDeporte;
 	private JButton btnVolver;
@@ -105,8 +107,46 @@ public class VentanaDeporte extends JFrame {
 		
 		
 	}
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeSortStr(ArrayList<Deporte> list) {
+	        if (list.size() == 1) return list;
+	        else {
+	            ArrayList<Deporte> listLeft = new ArrayList<Deporte>(list.subList(0, list.size() / 2));
+	            ArrayList<Deporte> listRight = new ArrayList<Deporte>(list.subList(list.size() / 2, list.size()));
+
+	            listLeft = mergeSortStr(listLeft);
+	            listRight = mergeSortStr(listRight);
+
+	            return mergeStrDeporte(listLeft, listRight);
+	        }
+
+
+	    }
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeStrDeporte(ArrayList<Deporte> a, ArrayList<Deporte> b) {
+	        ArrayList<Deporte> c = new ArrayList<>();
+	        while (!a.isEmpty() && !b.isEmpty()) {
+	            if (a.get(0).compareStr(b.get(0))) {
+	                c.add(b.get(0));
+	                b.remove(0);
+	            } else {
+	                c.add(a.get(0));
+	                a.remove(0);
+	            }
+	        }
+	        //At this point either a or b is empty
+	        while (!a.isEmpty()) {
+	            c.add(a.get(0));
+	            a.remove(0);
+	        }
+	        while ((!b.isEmpty())) {
+	            c.add(b.get(0));
+	            b.remove(0);
+	        }
+	        return c;
+	    }
 public void cargarlistaDeporte() {
 	lista_deportes=Fichero.leerDeporte("Deportes.txt");
+	lista_deportesordenado=mergeSortStr(lista_deportes);
+	
 	DefaultListModel<String> lista_paises = new DefaultListModel<String>();
 	for (int i = 0; i < lista_deportes.size(); i++) {
 		Deporte deportes = this.lista_deportes.get(i);
@@ -122,5 +162,6 @@ public ArrayList<Deporte> getDeportes() {
 public void setDatos(ArrayList<Deporte> lista_deportes) {
 	this.lista_deportes = lista_deportes;
 }
+
 }
 
