@@ -6,3 +6,4 @@ Futsal;Masculino
 Prueba;Masculino
 Prueba1;Masculino
 Bascket;Masculino
+Petanca;Masculino

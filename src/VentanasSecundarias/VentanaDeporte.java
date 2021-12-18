@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 import clases.Deporte;
 import clases.Fichero;
-import clasesrecursivas.I_Comparable;
+import interfaz.I_Comparable;
 
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionListener;
@@ -107,21 +107,21 @@ public class VentanaDeporte extends JFrame {
 		
 		
 	}
-	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeSortStr(ArrayList<Deporte> list) {
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeSortString(ArrayList<Deporte> list) {
 	        if (list.size() == 1) return list;
 	        else {
 	            ArrayList<Deporte> listLeft = new ArrayList<Deporte>(list.subList(0, list.size() / 2));
 	            ArrayList<Deporte> listRight = new ArrayList<Deporte>(list.subList(list.size() / 2, list.size()));
 
-	            listLeft = mergeSortStr(listLeft);
-	            listRight = mergeSortStr(listRight);
+	            listLeft = mergeSortString(listLeft);
+	            listRight = mergeSortString(listRight);
 
-	            return mergeStrDeporte(listLeft, listRight);
+	            return mergeStringDeporte(listLeft, listRight);
 	        }
 
 
 	    }
-	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeStrDeporte(ArrayList<Deporte> a, ArrayList<Deporte> b) {
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeStringDeporte(ArrayList<Deporte> a, ArrayList<Deporte> b) {
 	        ArrayList<Deporte> c = new ArrayList<>();
 	        while (!a.isEmpty() && !b.isEmpty()) {
 	            if (a.get(0).compareStr(b.get(0))) {
@@ -145,8 +145,7 @@ public class VentanaDeporte extends JFrame {
 	    }
 public void cargarlistaDeporte() {
 	lista_deportes=Fichero.leerDeporte("Deportes.txt");
-	lista_deportesordenado=mergeSortStr(lista_deportes);
-	
+	lista_deportesordenado=mergeSortString(lista_deportes);
 	DefaultListModel<String> lista_paises = new DefaultListModel<String>();
 	for (int i = 0; i < lista_deportes.size(); i++) {
 		Deporte deportes = this.lista_deportes.get(i);
@@ -161,6 +160,13 @@ public ArrayList<Deporte> getDeportes() {
 }
 public void setDatos(ArrayList<Deporte> lista_deportes) {
 	this.lista_deportes = lista_deportes;
+}
+@Override
+public String toString() {
+	return "VentanaDeporte [contentPane=" + contentPane + ", lista_deportes=" + lista_deportes
+			+ ", lista_deportesordenado=" + lista_deportesordenado + ", list=" + list + ", btnVerDeporte="
+			+ btnVerDeporte + ", btnVolver=" + btnVolver + ", btnAnadirDeportes=" + btnAnadirDeportes
+			+ ", btnEliminarDeporte=" + btnEliminarDeporte + "]";
 }
 
 }

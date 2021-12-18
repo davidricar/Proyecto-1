@@ -85,6 +85,7 @@ public class AnadirDeporte extends JFrame {
 		});
 		btnVolver.setBounds(141, 185, 89, 23);
 		contentPane.add(btnVolver);
+	
 		
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

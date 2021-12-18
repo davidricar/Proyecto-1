@@ -3,6 +3,8 @@ package clasesrecursivas;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import interfaz.I_Comparable;
+
 public class Sorting {
 
     /**

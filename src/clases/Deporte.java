@@ -3,6 +3,7 @@ package clases;
 import java.util.ArrayList;
 
 import interfaz.DeclaracionFormatoFichero;
+import interfaz.I_Comparable;
 
 /**
  * 
@@ -48,13 +49,5 @@ public class Deporte implements DeclaracionFormatoFichero  {
 	public String formatoFichero() {
 		return this.tipodeporte + ";" + this.sexo;
 	}
-
-
-
-
-
-
-
-	
 	
 }

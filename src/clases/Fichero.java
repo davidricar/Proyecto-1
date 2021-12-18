@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import clasesrecursivas.I_Comparable;
+import interfaz.I_Comparable;
 
 public class Fichero {
 
@@ -122,11 +122,11 @@ public class Fichero {
 		return d;
 	}
 	
-	  public static <T extends I_Comparable<T>> ArrayList<T> mergeSortStr(ArrayList<T> list) {
-	        if (list.size() == 1) return list;
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeSortStr(ArrayList<Deporte> lista_deportes) {
+	        if (lista_deportes.size() == 1) return lista_deportes;
 	        else {
-	            ArrayList<T> listLeft = new ArrayList<T>(list.subList(0, list.size() / 2));
-	            ArrayList<T> listRight = new ArrayList<T>(list.subList(list.size() / 2, list.size()));
+	            ArrayList<Deporte> listLeft = new ArrayList<Deporte>(lista_deportes.subList(0, lista_deportes.size() / 2));
+	            ArrayList<Deporte> listRight = new ArrayList<Deporte>(lista_deportes.subList(lista_deportes.size() / 2, lista_deportes.size()));
 
 	            listLeft = mergeSortStr(listLeft);
 	            listRight = mergeSortStr(listRight);
@@ -136,8 +136,8 @@ public class Fichero {
 
 
 	    }
-	  public static <T extends I_Comparable<T>> ArrayList<T> mergeStr(ArrayList<T> a, ArrayList<T> b) {
-	        ArrayList<T> c = new ArrayList<>();
+	  public static <Deporte extends I_Comparable<Deporte>> ArrayList<Deporte> mergeStr(ArrayList<Deporte> a, ArrayList<Deporte> b) {
+	        ArrayList<Deporte> c = new ArrayList<>();
 	        while (!a.isEmpty() && !b.isEmpty()) {
 	            if (a.get(0).compareStr(b.get(0))) {
 	                c.add(b.get(0));
