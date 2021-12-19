@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class bienvenido extends JFrame { 
+public class Bienvenido extends JFrame { 
 
 	private JPanel contentPane;
 
@@ -37,7 +37,7 @@ public class bienvenido extends JFrame {
 			
 			public void run() {
 				try {
-					bienvenido frame = new bienvenido();
+					Bienvenido frame = new Bienvenido();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class bienvenido extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public bienvenido() {
+	public Bienvenido() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -65,7 +65,7 @@ public class bienvenido extends JFrame {
 		btnDeportes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				VentanaDeporte d = new VentanaDeporte(bienvenido.this);
+				VentanaDeporte d = new VentanaDeporte(Bienvenido.this);
 				d.setVisible(true);
 				
 				

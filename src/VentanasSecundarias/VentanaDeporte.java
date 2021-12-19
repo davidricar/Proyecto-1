@@ -145,7 +145,7 @@ public class VentanaDeporte extends JFrame {
 	    }
 public void cargarlistaDeporte() {
 	lista_deportes=Fichero.leerDeporte("Deportes.txt");
-	lista_deportesordenado=mergeSortString(lista_deportes);
+	//lista_deportesordenado=mergeSortString(lista_deportes);
 	DefaultListModel<String> lista_paises = new DefaultListModel<String>();
 	for (int i = 0; i < lista_deportes.size(); i++) {
 		Deporte deportes = this.lista_deportes.get(i);
