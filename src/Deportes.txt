@@ -3,3 +3,6 @@ Voley;Masculino
 Futsal;Masculino
 Bascket;Masculino
 Petanca;Masculino
+AAA;Masculino
+Curling;Masculino
+BBB;Masculino

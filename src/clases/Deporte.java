@@ -16,6 +16,7 @@ public class Deporte implements DeclaracionFormatoFichero  {
 
 	String sexo;
 	String tipodeporte;
+	ArrayList<Deporte>lista_deportes;
 	
 /**
  * 
@@ -27,6 +28,7 @@ public class Deporte implements DeclaracionFormatoFichero  {
 		super();
 		this.tipodeporte = tipodeporte;
 		this.sexo=sexo;
+
 		
 	}
 
@@ -49,5 +51,16 @@ public class Deporte implements DeclaracionFormatoFichero  {
 	public String formatoFichero() {
 		return this.tipodeporte + ";" + this.sexo;
 	}
-	
+
+	public boolean compareStr1(Deporte deporte) {
+		// TODO Auto-generated method stub
+		return true ;
+	}
+
+
+
+	public int compareTo(Deporte deporte) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
